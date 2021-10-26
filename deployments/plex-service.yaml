@@ -1,18 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: plex
+  namespace: media
 spec:
   selector:
     matchLabels:
       app: plex
-      tier: frontend
+      tier: plex
   replicas: 1
   template:
     metadata:
       labels:
         app: plex
-        tier: frontend
+        tier: plex
     spec:
       containers:
       - env:
@@ -22,7 +23,7 @@ spec:
           value: "1000"
         - name: version
           value: docker
-        name: plex-frontend
+        name: plex
         image: lscr.io/linuxserver/plex
         resources:
           requests:
@@ -30,6 +31,6 @@ spec:
             memory: 100Mi
         ports:
         - containerPort: 32400
-          hostPort: 32401
+          hostPort: 32400
           name: plex-port
           protocol: TCP
