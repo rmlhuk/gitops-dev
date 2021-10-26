@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: plex
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: plex
+        tier: frontend
+    spec:
+      containers:
+      - env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: version
+          value: docker
+      - name: plex-frontend
+        image: lscr.io/linuxserver/plex
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 32400
+          hostPort: 32401
+          name: plex-port
+          protocol: TCP
