@@ -25,6 +25,7 @@ spec:
           value: docker
         name: plex
         image: lscr.io/linuxserver/plex
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: 100m
@@ -34,3 +35,5 @@ spec:
           hostPort: 32400
           name: plex-port
           protocol: TCP
+      hostNetwork: true
+      restartPolicy: Always
