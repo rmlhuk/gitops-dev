@@ -22,7 +22,7 @@ spec:
           value: "1000"
         - name: version
           value: docker
-      - name: plex-frontend
+        name: plex-frontend
         image: lscr.io/linuxserver/plex
         resources:
           requests:
