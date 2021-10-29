@@ -4,4 +4,4 @@ metadata:
   name: manifests
   namespace: fleet-local
 spec:
-  repo: https://github.com/rmlhhd/gitops-dev
+  repo: https://github.com/rmlhuk/gitops-dev
